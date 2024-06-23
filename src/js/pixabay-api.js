@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const imagesApi = axios.create({
   baseURL: 'https://pixabay.com',
-  
 });
 
 export async function getImages(request, currentPage) {
@@ -13,9 +12,9 @@ export async function getImages(request, currentPage) {
     orientation: 'horizontal',
     safesearch: true,
     page: currentPage,
-    per_page: 100,
+    per_page: 15,
   };
   const res = await imagesApi.get('/api/', { params });
-//   console.log(res.data);
+  //   console.log(res.data);
   return res.data;
-};
+}
