@@ -16,6 +16,6 @@ export async function getImages(request, currentPage) {
     per_page: 100,
   };
   const res = await imagesApi.get('/api/', { params });
-  console.log(res.data);
+//   console.log(res.data);
   return res.data;
 };

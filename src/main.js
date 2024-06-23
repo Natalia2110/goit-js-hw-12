@@ -20,7 +20,7 @@ const refs = {
 let request = '';
 let currentPage = 1;
 let maxPage = 1;
-const perPage = 10;
+const perPage = 100;
 
 // ===================================================
 
@@ -40,10 +40,10 @@ refs.formEl.addEventListener('submit', async e => {
         showLoader();
 
         try {
-            //   refs.inputEl.value = '';
+            
             const data = await getImages(request, currentPage);
-            // console.log(data);
             maxPage = Math.ceil(data.totalHits / perPage);
+            
 
             if (maxPage === 0) {
                 refs.inputEl.value = '';
@@ -67,11 +67,12 @@ refs.formEl.addEventListener('submit', async e => {
 });
 // ===================================================================
 refs.loadBtnEl.addEventListener('click', async e => {
-    currentPage++;
+    
     showLoader();
     hideLoadBtn();
     
     try {
+        currentPage++;
         const data = await getImages(request, currentPage);
        
         imagesTemplate(data.hits);
@@ -119,14 +120,16 @@ function messageIziToast() {
     titleSize: '16',
     titleLineHeight: '0.03em',
     position: 'topRight',
-    backgroundColor: '#ef4040',
+    backgroundColor: ' #6c8cff',
     theme: 'dark',
     iconUrl: imageUrl,
-    iconColor: '#4e75ff',
+    iconColor: '#FAFAFB',
   });
 };
 // ===================================================================
 function updateBtnStatus() {
+    // console.log(currentPage);
+    // console.log(maxPage);
   if (currentPage >= maxPage) {
     hideLoadBtn();
 
