@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-let lightbox;
+// let lightbox;
 
 export function imagesTemplate(arr) {
   const listEl = document.querySelector('.gallery');
@@ -11,14 +11,14 @@ export function imagesTemplate(arr) {
 
   listEl.insertAdjacentHTML('beforeEnd', markup);
 
-  lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionType: 'attr',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-  });
+  // lightbox = new SimpleLightbox('.gallery a', {
+  //   captionsData: 'alt',
+  //   captionType: 'attr',
+  //   captionPosition: 'bottom',
+  //   captionDelay: 250,
+  // });
 
-  lightbox.refresh();
+  // lightbox.refresh();
 
   // if (lightbox) {
     

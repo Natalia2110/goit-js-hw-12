@@ -7,7 +7,11 @@ import { imagesTemplate } from './js/render-function';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import imageUrl from './img/alert-icon.svg';
+
 
 const refs = {
   formEl: document.querySelector('.form'),
@@ -16,10 +20,19 @@ const refs = {
   loaderEl: document.querySelector('.loader'),
   loadBtnEl: document.querySelector('.load-btn'),
 };
+
+
 let request = '';
 let currentPage = 1;
 let maxPage = 1;
 const perPage = 15;
+
+const lightbox = new SimpleLightbox('.gallery a', {
+          captionsData: 'alt',
+          captionType: 'attr',
+          captionPosition: 'bottom',
+          captionDelay: 250,
+        });
 
 // ===================================================
 
@@ -47,14 +60,17 @@ refs.formEl.addEventListener('submit', async e => {
         hideLoader();
         showIziToast();
         updateBtnStatus();
+        
         return;
       } else {
         refs.inputEl.value = '';
         hideLoader();
         updateBtnStatus();
-        return imagesTemplate(data.hits);
+        imagesTemplate(data.hits);
+        lightbox.refresh();
       }
     } catch (err) {
+      // console.log(err);
       showError(err);
     }
     hideLoader();
@@ -71,6 +87,7 @@ refs.loadBtnEl.addEventListener('click', async e => {
     const data = await getImages(request, currentPage);
 
     imagesTemplate(data.hits);
+    lightbox.refresh();
     skipOldElement();
   } catch {
     console.log('error');
