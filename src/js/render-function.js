@@ -11,15 +11,27 @@ export function imagesTemplate(arr) {
 
   listEl.insertAdjacentHTML('beforeEnd', markup);
 
-  if (lightbox) {
-    lightbox.refresh();
-  }
   lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionType: 'attr',
     captionPosition: 'bottom',
     captionDelay: 250,
   });
+
+  lightbox.refresh();
+
+  // if (lightbox) {
+    
+  //   lightbox.refresh();
+  // }
+  // lightbox = new SimpleLightbox('.gallery a', {
+  //   captionsData: 'alt',
+  //   captionType: 'attr',
+  //   captionPosition: 'bottom',
+  //   captionDelay: 250,
+  // });
+  
+
 }
 
 const imageTemplate = image => {
