@@ -29,7 +29,7 @@ refs.formEl.addEventListener('submit', async e => {
 
   refs.imagesList.innerHTML = '';
   request = e.target.elements.photo.value.trim();
-  // console.log(request);
+  
 
   if (request === '') {
     refs.inputEl.value = '';
@@ -113,6 +113,13 @@ function messageIziToast() {
     theme: 'dark',
     iconUrl: imageUrl,
     iconColor: '#FAFAFB',
+  });
+};
+
+function showError(message) {
+  iziToast.error({
+    title: 'Error!',
+    message,
   });
 }
 // ===================================================================
